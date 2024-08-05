@@ -77,12 +77,21 @@ bool vote(string name)
     }
      return false;
 
+    int max_votes = 0;
+    for (i = 0; i < MAX; i++)
+    {
+        if (candidates[i].votes < candidates[i-1].votes)
+        {
+            
+        }
+    }
 }
 
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
     // TODO
-    
+    // Candidate with highest votes
+    // Candidates Votes on position i higher than candidates votes on position i+1 ?
     return;
 }
