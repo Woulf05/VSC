@@ -41,7 +41,7 @@ int main(int argc, string argv[])
     for (int i = 0; i < candidate_count; i++)
     {
         candidates[i].name = argv[i + 1];
-        candidates[i].votes = 0; //initalizes votes to 0
+        candidates[i].votes = 0; // initalizes votes to 0
     }
 
     int voter_count = get_int("Number of voters: ");
@@ -70,21 +70,34 @@ bool vote(string name)
     {
         if (strcmp(name, candidates[i].name) == 0)
         {
-            candidates[i].votes ++;
-            printf("Votes %i\n", candidates[i].votes);
+            candidates[i].votes++;
             return true;
         }
     }
-     return false;
-
+    return false;
 }
 
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
-    // TODO
-    // Candidate with highest votes
-    // Candidates Votes on position i higher than candidates votes on position i+1 ?
-    
-    return;
+    int i;
+
+    int max_votes = 0; // highest votes get stored in max_votes
+    for (i = 0; i < MAX; i++)
+    {
+        if (candidates[i].votes > max_votes)
+        {
+            max_votes = candidates[i].votes;
+        }
+    }
+
+    // Candidate with highest votes wins by being compared with max_votes
+    for (i = 0; i < MAX; i++)
+    {
+        if (candidates[i].votes == max_votes)
+        {
+            printf("%s\n", candidates[i].name);
+        }
+    }
+
 }
