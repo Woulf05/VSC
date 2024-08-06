@@ -1,8 +1,10 @@
 #include <cs50.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main(void)
+int main(int argc, string argv[])
 {
     // userinput sentence
     // non-negative integer for k
@@ -10,3 +12,57 @@ int main(void)
     // characters of command-line argument shall be decimals
     // else message "Usage: ./caesar key" + return 1
     // string p = plaintext; char pi = character p on position i; int k = secret key
+
+    if (argc != 2) // if commandline has not 2 arguments, there will be a usage hint.
+    {
+        printf("Usage:./caesar key\n");
+        return 1;
+    }
+    int k = atoi(argv[1]); // second argument (key) is stored in 'k'.
+
+    for (int i = 0; argv[1][i] != '\0'; i++) // checking if commandline-argument 2 is numeric.
+    {
+        if (!isdigit(argv[1][i]))
+        {
+            printf("Usage:./caesar key\n");
+            return 1;
+        }
+    }
+
+    if (isdigit(k) != 0) // 'k' needs to be >0.
+    {
+        printf("Usage:./caesar key\n");
+        return 1;
+    }
+    string p = get_string("plaintext:  ");
+
+    printf("ciphertext: ");
+
+    int n = strlen(p); // length of plaintext, stored in 'n'.
+    for (int i = 0; i < n; i++)
+    {
+        int c;
+
+        if (islower(p[i]))
+        {
+            c = ((p[i] - 'a' + k) % 26) + 'a'; // 'a' = 97
+        }
+        if (isupper(p[i]))
+        {
+            c = ((p[i] - 'A' + k) % 26) + 'A'; // 'A' = 65
+        }
+
+        if (ispunct(p[i]) || isspace(p[i])) // punctuation or spaces are not getting changed.
+        {
+            printf("%c", p[i]);
+        }
+        else if (p[i] != isupper(p[i]) ||
+                 islower(p[i])) // plaintext-character on position 'i' is lower
+        {
+            char s = c; // changing int 'c'' into a char by storing in 's'.
+            printf("%c", s);
+        }
+    }
+
+    printf("\n");
+}
