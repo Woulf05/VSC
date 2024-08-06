@@ -1,0 +1,4 @@
+#include <cs50.h>
+#include <stdio.h>
+
+// calculates how many years it will take to get a certain population size
