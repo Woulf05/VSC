@@ -2,3 +2,27 @@
 #include <stdio.h>
 
 // calculates how many years it will take to get a certain population size
+int main(void)
+{
+    int n;
+    do
+    {
+        n = get_int("Start size: ");
+    }
+    while (n < 9);
+
+    int e;
+    do
+    {
+        e = get_int("End size: ");
+    }
+    while (e < n);
+
+    long y = 0;
+    while (n < e)
+    {
+        n += n / 10;
+        y++;
+    }
+    printf("years: %li\n", y);
+}
