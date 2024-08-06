@@ -4,3 +4,9 @@
 
 int main(void)
 {
+    // userinput sentence
+    // non-negative integer for k
+    // if no userinput errormessage + returnvalue 1
+    // characters of command-line argument shall be decimals
+    // else message "Usage: ./caesar key" + return 1
+    // string p = plaintext; char pi = character p on position i; int k = secret key
