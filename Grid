@@ -1,0 +1,39 @@
+#include <cs50.h>
+#include <stdio.h>
+//Prints a grid of variable size
+
+int get_size(void);
+void print_grid(int n);
+
+int main(void)
+{
+    int n = get_size();
+    print_grid(n); // prints a grid of size n
+}
+
+int get_size(void)
+{
+    int n;
+    do
+    {
+        n = get_int("Size: ");
+        if (n < 1)
+        {
+            printf("Please choose a positive value\n");
+        }
+    }
+    while (n < 1);
+    return n; // hands back to any function which uses n as a variable, the value of n
+}
+
+void print_grid(int n)
+{
+    for (int i = 0; i < n; i++) // runs n times
+    {
+        for (int j = 0; j < n; j++) // n times "--" is get printed out
+        {
+            printf("--");
+        }
+        printf("\n");
+    }
+}
