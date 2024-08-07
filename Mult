@@ -1,0 +1,22 @@
+#include <cs50.h>
+#include <stdio.h>
+// Mults two reals(R)
+
+double mult_two_reals(double a, double b);
+
+int main(void)
+{
+    double a = get_double("a: ");
+    double b = get_double("b: ");
+
+    double x = mult_two_reals(a, b);
+}
+
+double mult_two_reals(double a, double b)
+{
+
+    double x = a * b;
+
+    printf("%f\n", x);
+    return x;
+}
